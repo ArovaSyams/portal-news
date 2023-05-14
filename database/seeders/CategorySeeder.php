@@ -13,7 +13,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $category = ['Nasional', 'Internasional', 'Olahraga', 'Ekonomi', 'Teknologi', 'Otomotif', 'Hiburan', 'Gaya Hidup'];
+        $category = ['Internasional', 'Olahraga', 'Ekonomi', 'Teknologi', 'Otomotif', 'Hiburan', 'Gaya Hidup'];
         foreach($category as $c) {
             DB::table('categories')->insert([
                 'category' => $c,
