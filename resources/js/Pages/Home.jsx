@@ -20,10 +20,10 @@ return classes.filter(Boolean).join(' ')
 }
 
 export default function Home(props) {
-    console.log(props.category);
+
 return (
     <>
-    <Head title="Log in" />
+    <Head title="Home" />
     <Disclosure as="nav" className="bg-gray-800">
     {({ open }) => (
         <>
@@ -240,19 +240,23 @@ return (
             <div>
                 
                 {props.news.map(function(news) {
-                    if(props.category.id === news.category_id) {
-                        var category = props.category.category
-                    }
+                    
 
-                    return (
-                        <div className='flex flex-row space-x-10 items-center mb-6' key={news.id}>
+                        return (
+                            <div className='flex flex-row space-x-10 items-center mb-6' key={news.id}>
                         <div className='basis-1/4'>
                             <img src="./img/beranda.jpg" className='rounded-lg' alt="" width={'100%'}/>
                         </div>
                         <div className='basis-3/4'>
                             <p className='text-gray-500 text-sm pb-3'>{new Date(news.created_at).toLocaleDateString()}, {new Date(news.created_at).toLocaleTimeString()}</p>
                             <p className='text-3xl font-serif pb-3'>{news.title}</p>
-                            <p className='font-semibold text-red-900'>{category}</p>
+                            {props.category.map(function(category) {
+                                if(category.id === news.category_id) {
+                                    return (
+                                        <p className='font-semibold text-red-900' key={category.id}>{category.category}</p>
+                                    )
+                                }
+                            })}
                         </div>
                     </div>
                     )

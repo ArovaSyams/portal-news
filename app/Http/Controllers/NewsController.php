@@ -18,7 +18,7 @@ class NewsController extends Controller
 
         return Inertia::render('Home', [
             'news' => News::All(),
-            'category' => Category::All()
+            'category' => Category::get()
         ]);
     }
 
