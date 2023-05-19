@@ -1,272 +1,111 @@
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Head } from '@inertiajs/react'
-
-const navigation = [
-{ name: 'Beranda', href: '#', current: true },
-{ name: 'Nasional', href: '#', current: false },
-{ name: 'Internasional', href: '#', current: false },
-{ name: 'Olahraga', href: '#', current: false },
-{ name: 'Ekonomi', href: '#', current: false },
-{ name: 'Teknologi', href: '#', current: false },
-{ name: 'Otomotıf', href: '#', current: false },
-{ name: 'Hıburan', href: '#', current: false },
-{ name: 'Gaya Hıdup', href: '#', current: false },
-]
-
-function classNames(...classes) {
-return classes.filter(Boolean).join(' ')
-}
+import PagesLayout from "@/Layouts/PagesLayout";
 
 export default function Home(props) {
-
-return (
-    <>
-    <Head title="Home" />
-    <Disclosure as="nav" className="bg-gray-800">
-    {({ open }) => (
-        <>
-        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div className="relative flex h-16 items-center justify-between">
-            <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                <span className="sr-only">Open main menu</span>
-                {open ? (
-                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                ) : (
-                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-                )}
-                </Disclosure.Button>
-            </div>
-            <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
-                {/* <img
-                    className="block h-8 w-auto lg:hidden"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                />
-                <img
-                    className="hidden h-8 w-auto lg:block"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                /> */}
-                <p className='text-2xl text-slate-100'>PortalNews</p>
-                </div>
-                <div className="hidden sm:ml-6 sm:block">
-                <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                    <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                        'rounded-md px-3 py-2 text-sm font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
-                    >
-                        {item.name}
-                    </a>
-                    ))}
-                </div>
-                </div>
-            </div>
-            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                {/* <button
-                type="button"
-                className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
-                <span className="sr-only">View notifications</span>
-                <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button> */}
-
-                {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-3">
-                <div>
-                    <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                    <span className="sr-only">Open user menu</span>
-                    <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                    />
-                    </Menu.Button>
-                </div>
-                <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <Menu.Item>
-                        {({ active }) => (
-                        <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                        >
-                            Your Profile
-                        </a>
-                        )}
-                    </Menu.Item>
-                    <Menu.Item>
-                        {({ active }) => (
-                        <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                        >
-                            Settings
-                        </a>
-                        )}
-                    </Menu.Item>
-                    <Menu.Item>
-                        {({ active }) => (
-                        <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                        >
-                            Sign out
-                        </a>
-                        )}
-                    </Menu.Item>
-                    </Menu.Items>
-                </Transition>
-                </Menu>
-            </div>
-            </div>
-        </div>
-
-        <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 px-2 pb-3 pt-2">
-            {navigation.map((item) => (
-                <Disclosure.Button
-                key={item.name}
-                as="a"
-                href={item.href}
-                className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium'
-                )}
-                aria-current={item.current ? 'page' : undefined}
-                >
-                {item.name}
-                </Disclosure.Button>
-            ))}
-            </div>
-        </Disclosure.Panel>
-        </>
-    )}
-    </Disclosure>
-
-    <main className='p-24'>
-
-        <section>
-            <div className='flex flex-row'>
-                <div className='basis-1/2 pr-20'>
-                    <img src="./img/beranda.jpg" className='rounded-lg' width={'100%'} alt="" />
-                </div>
-                <div className='basis-1/2'>
-                    <div>
-                        <a href="">
-                            <p className='text-5xl text-ellipsis font-serif leading-tight mb-6'>Perkembangan teknologi merusak perkembangan SDM</p>
-                            <p className='text-gray-800'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus laborum consectetur repudiandae veritatis soluta enim aperiam, deleniti architecto necessitatibus. Eligendi ad excepturi aliquid rerum harum quam animi aut fuga laborum.</p>
-                        </a>
-                        <div className='flex flex-row mt-6'>
-                            <a href='' className='mr-3 font-semibold text-red-900'>Teknologi</a>
-                            
-                            <p className='text-gray-500'>Selasa, 17 agustus 2022 14:00 WIB</p>
+    return (
+        <PagesLayout>
+            <section>
+                <div className='flex flex-row space-x-14'>
+                    <div className='basis-1/2'>
+                        <img src="./img/beranda.jpg" className='rounded-lg' width={'100%'} alt="" />
+                    </div>
+                    <div className='basis-1/2'>
+                        <div>
+                            <p className='text-4xl text-ellipsis font-serif leading-tight mb-6'><a href="">Menteri komunikasi ditetapkan sebagi tersangka</a></p>
+                            <p className='text-gray-800'><a href="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus laborum consectetur repudiandae veritatis soluta enim aperiam, deleniti architecto necessitatibus. Eligendi ad excepturi aliquid rerum harum quam animi aut fuga laborum.</a></p>
+                            <div className='flex flex-row mt-6'>
+                                <a href='' className='mr-3 font-semibold text-red-900'>Teknologi</a>
+                                
+                                <p className='text-gray-500'>Selasa, 17 agustus 2022 14:00 WIB</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section className='mt-10'>
-            <div className='flex flex-row justify-between'>
+            <section className='mt-10'>
+                <div className='flex flex-row justify-between'>
 
-                <p className='text-4xl mb-6'>Berita Populer</p>
-                <a href='' className='text-lg mb-6 font-semibold text-red-900'>See more</a>
-            </div>
-            <div className='flex flex-row space-x-6'>
-                <div className='flex-auto'>
-                    <img src="./img/beranda.jpg" className='rounded-lg' width={'100%'} alt="" />
-                    <div className='mt-6'>
-                        <p className='text-gray-500 text-sm pb-3'>Selasa, 17 agustus 2022 14:00 WIB</p>
-                        <p className='font-semibold text-red-900'>Teknologi</p>
-                        <p className='text-2xl font-serif pb-3'>Indonesia menang 3-4 dalam laga berkelas</p>
-                        <p className='text-sm leading-relaxed'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum et, impedit modi laboriosam dolore aliquam esse soluta aut</p>
-                    </div>
+                    <p className='text-4xl mb-6'>Berita Populer</p>
+                    <a href='' className='text-lg mb-6 font-semibold text-red-900'>See more</a>
                 </div>
-                <div className='flex-auto'>
-                    <img src="./img/beranda.jpg" className='rounded-lg' width={'100%'} alt="" />
-                    <div className='mt-6'>
-                        <p className='text-gray-500 text-sm pb-3'>Selasa, 17 agustus 2022 14:00 WIB</p>
-                        <p className='font-semibold text-red-900'>Teknologi</p>
-                        <p className='text-2xl font-serif pb-3'>Indonesia menang 3-4 dalam laga berkelas</p>
-                        <p className='text-sm leading-relaxed'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum et, impedit modi laboriosam dolore aliquam esse soluta aut</p>
+                <div className='flex flex-row space-x-6'>
+                    <div className='flex-auto'>
+                        <img src="./img/beranda.jpg" className='rounded-lg' width={'100%'} alt="" />
+                        <div className='mt-6'>
+                            <p className='text-gray-500 text-sm pb-3'>Selasa, 17 agustus 2022 14:00 WIB</p>
+                            <p className='font-semibold text-red-900'>Teknologi</p>
+                            <p className='text-2xl font-serif pb-3'>Indonesia menang 3-4 dalam laga berkelas</p>
+                            <p className='text-sm leading-relaxed'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum et, impedit modi laboriosam dolore aliquam esse soluta aut</p>
+                        </div>
                     </div>
-                </div>
-                <div className='flex-auto'>
-                    <img src="./img/beranda.jpg" className='rounded-lg' width={'100%'} alt="" />
-                    <div className='mt-6'>
-                        <p className='text-gray-500 text-sm pb-3'>Selasa, 17 agustus 2022 14:00 WIB</p>
-                        <p className='font-semibold text-red-900'>Teknologi</p>
-                        <p className='text-2xl font-serif pb-3'>Indonesia menang 3-4 dalam laga berkelas</p>
-                        <p className='text-sm leading-relaxed'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum et, impedit modi laboriosam dolore aliquam esse soluta aut</p>
+                    <div className='flex-auto'>
+                        <img src="./img/beranda.jpg" className='rounded-lg' width={'100%'} alt="" />
+                        <div className='mt-6'>
+                            <p className='text-gray-500 text-sm pb-3'>Selasa, 17 agustus 2022 14:00 WIB</p>
+                            <p className='font-semibold text-red-900'>Teknologi</p>
+                            <p className='text-2xl font-serif pb-3'>Indonesia menang 3-4 dalam laga berkelas</p>
+                            <p className='text-sm leading-relaxed'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum et, impedit modi laboriosam dolore aliquam esse soluta aut</p>
+                        </div>
                     </div>
-                </div>
-                <div className='flex-auto'>
-                    <img src="./img/beranda.jpg" className='rounded-lg' width={'100%'} alt="" />
-                    <div className='mt-6'>
-                        <p className='text-gray-500 text-sm pb-3'>Selasa, 17 agustus 2022 14:00 WIB</p>
-                        <p className='font-semibold text-red-900'>Teknologi</p>
-                        <p className='text-2xl font-serif pb-3'>Indonesia menang 3-4 dalam laga berkelas</p>
-                        <p className='text-sm leading-relaxed'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum et, impedit modi laboriosam dolore aliquam esse soluta aut</p>
+                    <div className='flex-auto'>
+                        <img src="./img/beranda.jpg" className='rounded-lg' width={'100%'} alt="" />
+                        <div className='mt-6'>
+                            <p className='text-gray-500 text-sm pb-3'>Selasa, 17 agustus 2022 14:00 WIB</p>
+                            <p className='font-semibold text-red-900'>Teknologi</p>
+                            <p className='text-2xl font-serif pb-3'>Indonesia menang 3-4 dalam laga berkelas</p>
+                            <p className='text-sm leading-relaxed'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum et, impedit modi laboriosam dolore aliquam esse soluta aut</p>
+                        </div>
                     </div>
-                </div>
-                
-            </div>
-        </section>
-
-        <section className='mt-10'>
-            <div>
-            <p className='text-4xl mb-6'>Berita Terbaru</p>
-            </div>
-
-            <div>
-                
-                {props.news.map(function(news) {
+                    <div className='flex-auto'>
+                        <img src="./img/beranda.jpg" className='rounded-lg' width={'100%'} alt="" />
+                        <div className='mt-6'>
+                            <p className='text-gray-500 text-sm pb-3'>Selasa, 17 agustus 2022 14:00 WIB</p>
+                            <p className='font-semibold text-red-900'>Teknologi</p>
+                            <p className='text-2xl font-serif pb-3'>Indonesia menang 3-4 dalam laga berkelas</p>
+                            <p className='text-sm leading-relaxed'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum et, impedit modi laboriosam dolore aliquam esse soluta aut</p>
+                        </div>
+                    </div>
                     
+                </div>
+            </section>
 
+            <section className='mt-10'>
+                <div>
+                <p className='text-4xl mb-6'>Berita Terbaru</p>
+                </div>
+
+                <div>
+                    
+                    {props.news.map(function(news) {
+                        const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+                        let objectDate = new Date(news.created_at);
+                        let day = weekday[objectDate.getDay()];
+                        let date = objectDate.getDate();
+                        let month = objectDate.getMonth() + 1;
+                        let year = objectDate.getFullYear();
+                        
                         return (
-                            <div className='flex flex-row space-x-10 items-center mb-6' key={news.id}>
+                        <div className='flex flex-row space-x-10 items-center mb-6' key={news.id}>
                         <div className='basis-1/4'>
-                            <img src="./img/beranda.jpg" className='rounded-lg' alt="" width={'100%'}/>
+                            <a href=""><img src="./img/beranda.jpg" className='rounded-lg' alt="" width={'100%'}/></a>
                         </div>
                         <div className='basis-3/4'>
-                            <p className='text-gray-500 text-sm pb-3'>{new Date(news.created_at).toLocaleDateString()}, {new Date(news.created_at).toLocaleTimeString()}</p>
-                            <p className='text-3xl font-serif pb-3'>{news.title}</p>
+                            <p className='text-gray-500 text-sm pb-3'>{`${day}, ${date}-${month}-${year}`}, {new Date(news.created_at).toLocaleTimeString()}</p>
+                            <p className='text-3xl font-serif pb-3'><a href={`/news/${news.id}`}>{news.title}</a></p>
                             {props.category.map(function(category) {
                                 if(category.id === news.category_id) {
                                     return (
-                                        <p className='font-semibold text-red-900' key={category.id}>{category.category}</p>
+                                        <p className='font-semibold text-red-900' key={category.id}><a href="">{category.category}</a></p>
                                     )
                                 }
                             })}
+                            </div>
                         </div>
-                    </div>
-                    )
-                })}
-            </div>
-            
-        </section>
-
-    </main>                    
-
-    </>
-)
+                        )
+                    })}
+                </div>
+                
+            </section>
+        </PagesLayout>
+    )
 }

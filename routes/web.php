@@ -18,6 +18,9 @@ use Inertia\Inertia;
 */
 
 Route::get('/', [NewsController::class, 'index']);
+// Route::get('/news/{id}', [NewsController::class, 'show']);
+
+Route::resource('/news', NewsController::class);
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
 //         'canLogin' => Route::has('login'),
