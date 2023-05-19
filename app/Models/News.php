@@ -11,11 +11,13 @@ class News extends Model
 {
     use HasFactory;
 
-    public function categories(): BelongsTo {
+    public function categories(): BelongsTo
+    {
         return $this->belongsTo(Category::class);
     }
 
-    public function comments(): HasMany {
+    public function comments(): HasMany
+    {
         return $this->hasMany(Comment::class);
     }
 }
